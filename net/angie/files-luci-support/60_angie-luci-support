@@ -1,0 +1,44 @@
+#!/bin/sh
+
+if angie -V 2>&1 | grep -q ubus && [ -f /usr/lib/angie/modules/ngx_http_ubus_module.so ]; then
+	if [ -z "$(cat /etc/angie/conf.d/luci.locations | grep ubus)" ]; then
+		cat <<EOT >> /etc/angie/conf.d/luci.locations
+
+location /ubus {
+        ubus_interpreter;
+        ubus_socket_path /var/run/ubus/ubus.sock;
+        ubus_parallel_req 2;
+}
+EOT
+	fi
+
+        # Drop old reference of luci.module as we migrated to a more automatic approach
+        [ -f "/etc/angie/module.d/luci.module" ] && rm /etc/angie/module.d/luci.module
+fi
+
+grep -q /var/run/ubus.sock /etc/angie/conf.d/luci.locations &&
+	sed -i 's#/var/run/ubus.sock#/var/run/ubus/ubus.sock#' /etc/angie/conf.d/luci.locations
+
+if [ -x /etc/init.d/uhttpd ]; then
+        /etc/init.d/uhttpd disable
+        if [ -n "$(pgrep uhttpd)" ]; then
+                /etc/init.d/uhttpd stop
+        fi
+fi
+
+/etc/init.d/angie enable
+if [ -n "$(pgrep angie)" ]; then
+        /etc/init.d/angie restart
+else
+        /etc/init.d/angie start
+fi
+
+/etc/init.d/uwsgi enable
+if [ -n "$(pgrep uwsgi)" ]; then
+        /etc/init.d/uwsgi restart
+else
+        /etc/init.d/uwsgi start
+fi
+
+
+exit 0
