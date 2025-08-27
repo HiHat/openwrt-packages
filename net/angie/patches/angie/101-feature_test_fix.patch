@@ -1,0 +1,123 @@
+--- a/auto/cc/conf
++++ b/auto/cc/conf
+@@ -40,7 +40,7 @@
+ 
+     ngx_feature="C compiler"
+     ngx_feature_name=
+-    ngx_feature_run=yes
++    ngx_feature_run=no
+     ngx_feature_incs=
+     ngx_feature_path=
+     ngx_feature_libs=
+@@ -204,7 +204,7 @@
+     else
+         ngx_feature="gcc builtin atomic operations"
+         ngx_feature_name=NGX_HAVE_GCC_ATOMIC
+-        ngx_feature_run=yes
++        ngx_feature_run=no
+         ngx_feature_incs=
+         ngx_feature_path=
+         ngx_feature_libs=
+@@ -225,7 +225,7 @@
+     else
+         ngx_feature="C99 variadic macros"
+         ngx_feature_name="NGX_HAVE_C99_VARIADIC_MACROS"
+-        ngx_feature_run=yes
++        ngx_feature_run=no
+         ngx_feature_incs="#include <stdio.h>
+ #define var(dummy, ...)  sprintf(__VA_ARGS__)"
+         ngx_feature_path=
+@@ -239,7 +239,7 @@
+ 
+     ngx_feature="gcc variadic macros"
+     ngx_feature_name="NGX_HAVE_GCC_VARIADIC_MACROS"
+-    ngx_feature_run=yes
++    ngx_feature_run=no
+     ngx_feature_incs="#include <stdio.h>
+ #define var(dummy, args...)  sprintf(args)"
+     ngx_feature_path=
+--- a/auto/os/linux
++++ b/auto/os/linux
+@@ -28,7 +28,7 @@
+ 
+ ngx_feature="epoll"
+ ngx_feature_name="NGX_HAVE_EPOLL"
+-ngx_feature_run=yes
++ngx_feature_run=no
+ ngx_feature_incs="#include <sys/epoll.h>"
+ ngx_feature_path=
+ ngx_feature_libs=
+@@ -127,7 +127,7 @@
+ CC_AUX_FLAGS="$cc_aux_flags -D_GNU_SOURCE"
+ ngx_feature="sendfile()"
+ ngx_feature_name="NGX_HAVE_SENDFILE"
+-ngx_feature_run=yes
++ngx_feature_run=no
+ ngx_feature_incs="#include <sys/sendfile.h>
+                   #include <errno.h>"
+ ngx_feature_path=
+@@ -148,7 +148,7 @@
+ CC_AUX_FLAGS="$cc_aux_flags -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64"
+ ngx_feature="sendfile64()"
+ ngx_feature_name="NGX_HAVE_SENDFILE64"
+-ngx_feature_run=yes
++ngx_feature_run=no
+ ngx_feature_incs="#include <sys/sendfile.h>
+                   #include <errno.h>"
+ ngx_feature_path=
+@@ -166,7 +166,7 @@
+ 
+ ngx_feature="prctl(PR_SET_DUMPABLE)"
+ ngx_feature_name="NGX_HAVE_PR_SET_DUMPABLE"
+-ngx_feature_run=yes
++ngx_feature_run=no
+ ngx_feature_incs="#include <sys/prctl.h>"
+ ngx_feature_path=
+ ngx_feature_libs=
+@@ -178,7 +178,7 @@
+ 
+ ngx_feature="prctl(PR_SET_KEEPCAPS)"
+ ngx_feature_name="NGX_HAVE_PR_SET_KEEPCAPS"
+-ngx_feature_run=yes
++ngx_feature_run=no
+ ngx_feature_incs="#include <sys/prctl.h>"
+ ngx_feature_path=
+ ngx_feature_libs=
+--- a/auto/unix
++++ b/auto/unix
+@@ -848,7 +848,7 @@
+ 
+ ngx_feature="mmap(MAP_ANON|MAP_SHARED)"
+ ngx_feature_name="NGX_HAVE_MAP_ANON"
+-ngx_feature_run=yes
++ngx_feature_run=no
+ ngx_feature_incs="#include <sys/mman.h>"
+ ngx_feature_path=
+ ngx_feature_libs=
+@@ -865,7 +865,7 @@
+ 
+ ngx_feature='mmap("/dev/zero", MAP_SHARED)'
+ ngx_feature_name="NGX_HAVE_MAP_DEVZERO"
+-ngx_feature_run=yes
++ngx_feature_run=no
+ ngx_feature_incs="#include <sys/mman.h>
+                   #include <sys/stat.h>
+                   #include <fcntl.h>"
+@@ -884,7 +884,7 @@
+ 
+ ngx_feature="System V shared memory"
+ ngx_feature_name="NGX_HAVE_SYSVSHM"
+-ngx_feature_run=yes
++ngx_feature_run=no
+ ngx_feature_incs="#include <sys/ipc.h>
+                   #include <sys/shm.h>"
+ ngx_feature_path=
+@@ -902,7 +902,7 @@
+ 
+ ngx_feature="POSIX semaphores"
+ ngx_feature_name="NGX_HAVE_POSIX_SEM"
+-ngx_feature_run=yes
++ngx_feature_run=no
+ ngx_feature_incs="#include <semaphore.h>"
+ ngx_feature_path=
+ ngx_feature_libs=
