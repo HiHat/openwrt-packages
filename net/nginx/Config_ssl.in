@@ -201,6 +201,7 @@ config NGINX_HTTP_SUB
 	default n
 
 config NGINX_STREAM_REAL_IP
+	depends on PACKAGE_nginx-mod-stream
 	bool
 	prompt "Enable STREAM real ip module"
 	default n

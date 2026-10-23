@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2012-2016 OpenWrt.org
+# Copyright (C) 2012-2026 OpenWrt.org
 #
 # This is free software, licensed under the GNU General Public License v2.
 # See /LICENSE for more information.
@@ -8,12 +8,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=nginx
-PKG_VERSION:=1.30.5
+PKG_VERSION:=1.30.6
 PKG_RELEASE:=1
 
 PKG_SOURCE:=nginx-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://nginx.org/download/
-PKG_HASH:=6c20565aa2325cb82216ae804f4a4ff1875179014759a381c42ddc8e11c4906d
+PKG_HASH:=3cf46f5ed7504d460125866b7bea99fb357f31d887e2e63b35503310e9b8b6c8
 
 PKG_MAINTAINER:=Thomas Heil <heil@terminal-consulting.de> \
 				Christian Marangi <ansuelsmth@gmail.com>
@@ -258,10 +258,10 @@ define Package/nginx-mod-lua-resty-core/install
 endef
 
 define Download/nginx-mod-headers-more
-  SOURCE_DATE:=2022-07-17
-  SOURCE_VERSION:=bea1be3bbf6af28f6aa8cf0c01c07ee1637e2bd0
+  SOURCE_DATE:=2025-07-04
+  SOURCE_VERSION:=2b1debde426783b8f42246149d3638644a6347cb
   URL:=https://github.com/openresty/headers-more-nginx-module.git
-  MIRROR_HASH:=569abadc137b5b52bdcc33b00aa21f6d266cb84fb891795da2c4e101c4898abe
+  MIRROR_HASH:=skip
   PROTO:=git
 endef
 
@@ -274,10 +274,10 @@ define Download/nginx-mod-brotli
 endef
 
 define Download/nginx-mod-rtmp
-  SOURCE_DATE:=2018-12-07
-  SOURCE_VERSION:=f0ea62342a4eca504b311cd5df910d026c3ea4cf
-  URL:=https://github.com/ut0mt8/nginx-rtmp-module.git
-  MIRROR_HASH:=9c98d886ae4ea3708bb0bca55f8df803418a407e0ffc6df56341bd76ad39cba8
+  SOURCE_DATE:=2025-07-05
+  SOURCE_VERSION:=4b0fc161e135e3f15527d8b8c41f55b45672e26b
+  URL:=https://github.com/dvershinin/nginx-rtmp-module.git
+  MIRROR_HASH:=skip
   PROTO:=git
 endef
 
@@ -298,26 +298,26 @@ define Download/nginx-mod-naxsi
 endef
 
 define Download/nginx-mod-lua
-  SOURCE_DATE:=2023-08-19
-  SOURCE_VERSION:=c89469e920713d17d703a5f3736c9335edac22bf
+  SOURCE_DATE:=2025-01-17
+  SOURCE_VERSION:=5bd471a4bce6c02dd68b1ca72fbabb09fb2041d8
   URL:=https://github.com/openresty/lua-nginx-module.git
-  MIRROR_HASH:=c3bdf1b23f0a63991b5dcbd1f8ee150e6f893b43278e8600e4e0bb42a6572db4
+  MIRROR_HASH:=skip
   PROTO:=git
 endef
 
 define Download/nginx-mod-lua-resty-core
-  SOURCE_DATE:=2023-09-09
-  SOURCE_VERSION:=2e2b2adaa61719972fe4275fa4c3585daa0dcd84
+  SOURCE_DATE:=2025-01-17
+  SOURCE_VERSION:=cb7264da6d94c259c4ad01ee5c61b5f65e3c7eb4
   URL:=https://github.com/openresty/lua-resty-core.git
-  MIRROR_HASH:=c5f3df92fd72eac5b54497c039aca0f0d9ea1d87223f1e3a54365ba565991874
+  MIRROR_HASH:=skip
   PROTO:=git
 endef
 
 define Download/nginx-mod-lua-resty-lrucache
-  SOURCE_DATE:=2023-08-06
-  SOURCE_VERSION:=52f5d00403c8b7aa8a4d4f3779681976b10a18c1
+  SOURCE_DATE:=2024-10-10
+  SOURCE_VERSION:=3ff6300e68b73ba20e909c7d16bd839aef2e5a4b
   URL:=https://github.com/openresty/lua-resty-lrucache.git
-  MIRROR_HASH:=0833e0114948af4edb216c5c34b3f1919f534b298f4fa29739544f7c9bb8a08d
+  MIRROR_HASH:=skip
   PROTO:=git
 endef
 
@@ -330,18 +330,18 @@ define Download/nginx-mod-dav-ext
 endef
 
 define Download/nginx-mod-ubus
-  SOURCE_DATE:=2020-09-06
-  SOURCE_VERSION:=b2d7260dcb428b2fb65540edb28d7538602b4a26
+  SOURCE_DATE:=2024-03-02
+  SOURCE_VERSION:=564fa3e9c2b04ea298ea659b793480415da26415
   URL:=https://github.com/Ansuel/nginx-ubus-module.git
-  MIRROR_HASH:=515bb9d355ad80916f594046a45c190a68fb6554d6795a54ca15cab8bdd12fda
+  MIRROR_HASH:=92c9ab94d88a2fe8d7d1e8a15d15cfc4d529fdc357ed96d22b65d5da3dd24d7f
   PROTO:=git
 endef
 
 define Download/nginx-mod-njs
-  SOURCE_DATE:=2024-10-03
-  SOURCE_VERSION:=c5a29a7af8894ee1ec44ebda71ef0ea1f2a31af6
+  SOURCE_DATE:=2026-10-14
+  SOURCE_VERSION:=72e6a980b9bf2a28ae2d568bbc3b6830a5d7c39e
   URL:=https://github.com/nginx/njs.git
-  MIRROR_HASH:=6c94ec6b1c119e0c7a85ec395a4987a8a61739e1f9256ce6d92a16804c5d4637
+  MIRROR_HASH:=d3fdb1679a5b5d5cd92f3d336b3a1369eda2764e3370d8f989deecceb2d379e0
   PROTO:=git
 endef
 
@@ -501,7 +501,7 @@ $(eval $(call BuildPackage,nginx-full))
 $(eval $(call BuildPackage,nginx-mod-luci))
 $(eval $(call BuildPackage,nginx-mod-lua-resty-lrucache))
 $(eval $(call BuildPackage,nginx-mod-lua-resty-core))
-$(eval $(call BuildModule,stream,+@NGINX_STREAM_CORE_MODULE, \
+$(eval $(call BuildModule,stream,+@CONFIG_PACKAGE_nginx-mod-stream, \
 	ngx_stream, Add support for NGINX request streaming.))
 $(eval $(call BuildModule,lua,+nginx-mod-lua-resty-core,ngx_http_lua, \
 	Enable Lua module (luajit2 based, OpenResty patches)))
@@ -519,7 +519,7 @@ $(eval $(call BuildModule,brotli,,ngx_http_brotli_filter ngx_http_brotli_static,
 	Add support for brotli compression module.))
 $(eval $(call BuildModule,naxsi,,ngx_http_naxsi, \
 	Enable NAXSI module.))
-$(eval $(call BuildModule,geoip2,+@NGINX_STREAM_CORE_MODULE +nginx-mod-stream +libmaxminddb,ngx_http_geoip2 ngx_stream_geoip2, \
+$(eval $(call BuildModule,geoip2,+@CONFIG_PACKAGE_nginx-mod-stream +nginx-mod-stream +libmaxminddb,ngx_http_geoip2 ngx_stream_geoip2, \
 	Enable MaxMind GeoIP2 module.))
 $(eval $(call BuildModule,njs,+zlib +libxml2 +libxslt +libpcre2,ngx_http_js, \
 	Enable NJS module.))
